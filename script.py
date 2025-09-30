@@ -21,8 +21,8 @@ def generate_rss(feeds, output="index.xml"):
     for url in feeds:
         feed = feedparser.parse(url)
         for entry in feed.entries:
-            # リンクで重複判定
-            uid = hashlib.md5(entry.link.encode()).hexdigest()
+            # タイトルで重複判定
+            uid = hashlib.md5(entry.title.encode()).hexdigest()
             if uid in seen:
                 continue
             seen.add(uid)
@@ -39,7 +39,7 @@ def generate_rss(feeds, output="index.xml"):
     # RSS生成
     rss = Element("rss", version="2.0")
     channel = SubElement(rss, "channel")
-    SubElement(channel, "title").text = "Custom Aggregated Feed"
+    SubElement(channel, "title").text = "Bloomberg Custom Aggregated Feed"
     SubElement(channel, "link").text = "https://un-inc.github.io/merged-rss/"
     SubElement(channel, "description").text = "Merged feed without duplicates"
     SubElement(channel, "lastBuildDate").text = datetime.utcnow().isoformat()
