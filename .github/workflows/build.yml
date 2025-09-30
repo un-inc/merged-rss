@@ -1,12 +1,15 @@
 name: Build and Deploy RSS
 
 on:
-  workflow_dispatch:   # 手動実行
-  push:                # mainブランチ更新時
+  workflow_dispatch:
+  push:
     branches:
       - main
-  schedule:            # 15分ごとに自動実行
+  schedule:
     - cron: "*/15 * * * *"
+
+permissions:
+  contents: write   # ← これが重要
 
 jobs:
   build:
