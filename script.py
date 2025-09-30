@@ -21,8 +21,8 @@ def generate_rss(feeds, output="index.xml"):
     for url in feeds:
         feed = feedparser.parse(url)
         for entry in feed.entries:
-            # タイトル+リンクで重複判定
-            uid = hashlib.md5((entry.title + entry.link).encode()).hexdigest()
+            # リンクで重複判定
+            uid = hashlib.md5(entry.link.encode()).hexdigest()
             if uid in seen:
                 continue
             seen.add(uid)
