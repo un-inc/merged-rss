@@ -1,2 +1,6 @@
-https://www.bloomberg.co.jp/feed/news/
-https://feeds.bloomberg.com/news/markets.rss
+https://assets.wor.jp/rss/rdf/bloomberg/top.rdf
+https://assets.wor.jp/rss/rdf/bloomberg/overseas.rdf
+https://assets.wor.jp/rss/rdf/bloomberg/domestic.rdf
+https://assets.wor.jp/rss/rdf/bloomberg/markets.rdf
+https://assets.wor.jp/rss/rdf/bloomberg/economy.rdf
+https://assets.wor.jp/rss/rdf/bloomberg/commentary.rdf
