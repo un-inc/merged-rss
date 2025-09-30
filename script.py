@@ -29,7 +29,7 @@ def generate_rss(feeds, output="index.xml"):
     rss = Element("rss", version="2.0")
     channel = SubElement(rss, "channel")
     SubElement(channel, "title").text = "Custom Aggregated Feed"
-    SubElement(channel, "link").text = "https://YOUR_USERNAME.github.io/rss-aggregator/"
+    SubElement(channel, "link").text = "https://un-inc.github.io/merged-rss/"
     SubElement(channel, "description").text = "Merged feed without duplicates"
     SubElement(channel, "lastBuildDate").text = datetime.utcnow().isoformat()
 
