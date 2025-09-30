@@ -56,3 +56,9 @@ if __name__ == "__main__":
     with open("feeds.txt") as f:
         feeds = [line.strip() for line in f if line.strip()]
     generate_rss(feeds)
+
+for entry in feed.entries:
+    print("TITLE:", entry.get("title"))
+    print("LINK:", entry.get("link"))
+    print("PUBLISHED:", entry.get("published", entry.get("updated", "N/A")))
+    print("----")
