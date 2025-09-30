@@ -3,6 +3,16 @@ import hashlib
 from datetime import datetime
 from xml.etree.ElementTree import Element, SubElement, tostring, ElementTree
 
+def get_date(entry):
+    if hasattr(entry, "published"):
+        return entry.published
+    elif hasattr(entry, "updated"):
+        return entry.updated
+    elif "dc_date" in entry:  # feedparserがRDFのdc:dateを拾う場合あり
+        return entry.dc_date
+    else:
+        return None
+        
 def generate_rss(feeds, output="index.xml"):
     seen = set()
     items = []
@@ -16,12 +26,13 @@ def generate_rss(feeds, output="index.xml"):
             if uid in seen:
                 continue
             seen.add(uid)
+            date = get_date(entry) or datetime.utcnow().isoformat()
             items.append({
                 "title": entry.title,
                 "link": entry.link,
-                "published": getattr(entry, "published", datetime.utcnow().isoformat())
+                "published": date
             })
-
+            
     # 新しい順にソート
     items.sort(key=lambda x: x["published"], reverse=True)
 
